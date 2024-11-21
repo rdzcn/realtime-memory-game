@@ -1,0 +1,18 @@
+{
+	"name": "realtime-memory-game",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"dev:client": "pnpm --filter @realtime-memory-game/client run dev",
+		"dev:backend": "pnpm --filter @realtime-memory-game/backend run dev",
+		"build": "pnpm -r build",
+		"format": "pnpm biome write"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"dependencies": {
+		"biome": "^0.3.3"
+	}
+}

@@ -1,0 +1,36 @@
+// prisma/schema.prisma
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model Game {
+  id           Int      @id @default(autoincrement())
+  gameCode     String   @unique
+  player1      User?    @relation("Player1Games", fields: [player1Id], references: [id])
+  player1Id    Int?
+  player2      User?    @relation("Player2Games", fields: [player2Id], references: [id])
+  player2Id    Int?
+  currentTurn  Int?     // Stores the id of the user whose turn it is
+  player1Score Int      @default(0)
+  player2Score Int      @default(0)
+  status       String   @default("waiting") // 'waiting', 'in_progress', 'completed'
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model User {
+  id         Int      @id @default(autoincrement())
+  username   String   @unique
+  email      String   @unique
+  password   String
+  totalScore Int      @default(0)
+  player1Games Game[] @relation("Player1Games") // Relation to games where user is player1
+  player2Games Game[] @relation("Player2Games") // Relation to games where user is player2
+  createdAt  DateTime @default(now())
+}
+

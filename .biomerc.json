@@ -1,0 +1,39 @@
+{
+	"includes": ["packages/**/*.{js,ts,tsx}"],
+	"formatter": {
+		"indentStyle": "tab",
+		"indentWidth": 4,
+		"enabled": true,
+		"lineWidth": 100,
+		"ignore": ["node_modules", "dist", "out", "build", "public", "tsconfig.*"],
+		"useTabs": true,
+		"singleQuote": false,
+		"semi": true
+	},
+	"files": {
+		"ignore": ["node_modules", "dist", "out", "build", "public", "tsconfig.*"]
+	},
+	"linter": {
+		"enabled": true,
+		"rules": {
+			"suspicious": {
+				"noConsoleLog": "warn",
+				"noEmptyInterface": "off",
+				"noArrayIndexKey": "warn",
+				"noAssignInExpressions": "off"
+			},
+			"recommended": true,
+			"correctness": {
+				"noUnusedVariables": "warn",
+				"useExhaustiveDependencies": "warn"
+			},
+			"style": {
+				"useBlockStatements": "error",
+				"noNonNullAssertion": "off"
+			},
+			"performance": {
+				"noDelete": "off"
+			}
+		}
+	}
+}
